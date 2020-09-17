@@ -33,8 +33,7 @@ const facebookSetup = require('./config/facebook-setup')
 dotenv.config()
 
 
-
-mongoose.connect(process.env.DB_CONNECT,
+mongoose.connect("mongodb+srv://adeel_11:ahmd1111@cluster0.8yxc5.mongodb.net/auth?retryWrites=true&w=majority",
     {
       keepAlive: true,
       useNewUrlParser: true,
@@ -51,6 +50,8 @@ mongoose.connect(process.env.DB_CONNECT,
  app.use(express.json())
 
  //Route middlewae
+
+
 
 
  app.use('/', resetRoute)
@@ -72,7 +73,6 @@ app.use('/flight_reschedule',flight_reschedule);
 
 
  app.set("view engine","ejs")
-
 
 
 // storage engine 
