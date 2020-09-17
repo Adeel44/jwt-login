@@ -1,18 +1,18 @@
 const app = require('express')();
+
+const userController = require('../controller/user.controller');
 const User = require('../models/User');
- const _ = require('lodash');
-const jwt = require('jsonwebtoken');
-app.post('/', async (req, res, next) => {
-try {
-    // req.body.role
-    
-const user = new User(_.pick(req.body, ['name', 'email', 'password', 'role']));
-await user.save();
-const token = jwt.sign({ _id: user._id, role: user.role }, "secretkey");
-res.header('x-auth-header', token).send(_.pick(user, ['name', 'email', 'password']));
-}
-catch (ex) {
-res.status(401).send("User unable to get auth token::");
-}})
+
+app.post('/',  userController.user_create );
+
+
+ app.post('/create', userController.create);
+ app.get('/findall', userController.findAll);
+ app.get('/:id', userController.findOne);
+ app.put('/:id', userController.update);
+
+ app.delete('/:id', userController.delete);
+
+
 module.exports = app;
 

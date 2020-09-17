@@ -1,7 +1,4 @@
-// const mongoose = require('mongoose')
-// const User = mongoose.model('User')
-
-const User = require('./models/User')
+const User = require('../models/User')
 const passport = require('passport')
 const bcrypt = require('bcryptjs');
 
@@ -67,22 +64,3 @@ passport.use(new GoogleStrategy({
    )
    
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
